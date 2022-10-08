@@ -1,6 +1,13 @@
-import express from 'express';
+import express from "express";
 
-import { getJobTypes, getJobs, getSkills, createJob, createJobType, createSkill  } from '../controllers/static.js';
+import {
+  getJobTypes,
+  getJobs,
+  getSkills,
+  createJob,
+  createJobType,
+  createSkill,
+} from "../controllers/static.js";
 
 const router = express.Router();
 

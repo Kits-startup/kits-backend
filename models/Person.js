@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import PersonAccountsSchema from "./PersonAccounts.js";
+import PersonAccountsSchema from "./person_accounts";
 import JobTypesSchema from "./job_types";
-import JobSkillSchema from "./JobSkills.js";
+import JobSkillSchema from "./job_skills";
 
 const { Schema } = mongoose;
 
@@ -49,8 +49,8 @@ const PersonSchema = new mongoose.Schema({
                 required: true
             },
             job_name : String,
-            start_at : {
-                type: Date,
+            start_at : { //  Date로 저장할지 vs "2022-01-03"의 문자로 저정할지 확인 필요
+                type:String,
                 required: true
             }, 
             end_at : String,
