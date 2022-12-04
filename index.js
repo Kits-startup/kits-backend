@@ -1,46 +1,51 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import compression from 'compression';
 import mongoose from 'mongoose';
-import usersRoute from './routes/user.js';
-import postRoute from './routes/post.js'
-import staticRoute from './routes/static.js';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+
+import CompanyUserRoutes from './routes/companyuser.js';
+import PersonalUserRoutes from './routes/personaluser.js';
+import PaymentRoutes from './routes/payment.js';
 
 const app = express();
 dotenv.config();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cors());
-app.use(morgan('dev'));
-app.use(helmet());
-app.use(compression());
 
-app.use("/api/users", usersRoute);
-app.use("/api/posts", postRoute);
-app.use("/api/static", staticRoute);
-
+app.use(cors({origin: true, credentials: true}));
 
 const connect = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log("Connected to Mongo DB");
-    } catch (err) {
-        throw err;
+        await mongoose.connect(process.env.MONGO);
+        console.log("Connected To MongoDB");
+    } catch (error) {
+        throw error;
     }
-}
+};
+
+mongoose.connection.on("disconnected", () => {
+    console.log("MongoDB Disconnected");
+})
+
+//Middlewares
+app.use(cookieParser());
+app.use(express.json());
+
+app.use("/api/companyuser", CompanyUserRoutes);
+app.use("/api/personaluser", PersonalUserRoutes);
+app.use("/api/payment", PaymentRoutes);
 
 app.use((req, res, next) => {
+    res.header( "Access-Control-Allow-Origin" );
     console.log("Middleware Used");
-}) // Delete in production
+})
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 8800, () => {
     connect();
-    console.log("Server Started");
-});
+    console.log("Connected to Backend");
+})
