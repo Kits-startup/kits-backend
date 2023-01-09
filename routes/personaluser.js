@@ -1,11 +1,11 @@
 import express from "express";
 import {
-    getPersonalUsers,
-    getPersonalUserById,
-    getPersonalUserByUserNumber,
-    createPersonalUser,
-    updatePersonalUser,
-    deletePersonalUser,
+  getPersonalUsers,
+  getPersonalUserById,
+  getPersonalUserByUserNumber,
+  createPersonalUser,
+  updatePersonalUser,
+  deletePersonalUser,
 } from "../controllers/personaluser.js";
 
 const router = express.Router();

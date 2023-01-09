@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import CompanyUserRoutes from './routes/companyuser.js';
 import PersonalUserRoutes from './routes/personaluser.js';
 import PaymentRoutes from './routes/payment.js';
+import NotificationRoutes from './routes/notification.js';
 
 const app = express();
 dotenv.config();
@@ -39,6 +40,9 @@ app.use(express.json());
 app.use("/api/companyuser", CompanyUserRoutes);
 app.use("/api/personaluser", PersonalUserRoutes);
 app.use("/api/payment", PaymentRoutes);
+app.use("/api/auth/company", CompanyUserRoutes);
+app.use("/api/auth/personal", PersonalUserRoutes);
+app.use("/api/notification", NotificationRoutes);
 
 app.use((req, res, next) => {
     res.header( "Access-Control-Allow-Origin" );
