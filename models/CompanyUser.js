@@ -7,20 +7,24 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    /*
     userNumber: { // 넘버링용
         type: Number,
         required: true,
         unique: true,
     },
+    */
     email: { // 기업 이메일
         type: String,
         required: true,
         unique: true,
     },
+    /*
     type: { // 유형
         type: String,
         required: true,
     },
+    */
     phone: { // 전화번호
         type: String,
         required: true,

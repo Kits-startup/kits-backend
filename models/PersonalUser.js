@@ -7,11 +7,13 @@ const PersonalUserSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    /*
     userNumber: { // 넘버링용
         type: Number,
         required: true,
         unique: true,
     },
+    */
     name: { // 이름
         type: String,
         required: true,

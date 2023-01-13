@@ -8,8 +8,8 @@ const NotificationSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    uploader: { // idx 값으로 사용, companyUser의 idx 값 참고
-        type: Number,
+    uploader: {
+        type: String,
         required: true,
     }, 
     jobType: { // 직군 카테고리 

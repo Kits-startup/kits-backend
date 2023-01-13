@@ -30,17 +30,6 @@ export const getCompanyUserByUserNumber = async (req, res) => {
   }
 };
 
-export const createCompanyUser = async (req, res) => {
-  const companyUser = req.body;
-  const newCompanyUser = new CompanyUser(companyUser);
-  try {
-    await newCompanyUser.save();
-    res.status(201).json(newCompanyUser);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
-  }
-};
-
 export const updateCompanyUser = async (req, res) => {
   const { id } = req.params;
   const companyUser = req.body;
