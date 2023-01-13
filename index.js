@@ -12,13 +12,16 @@ import PersonalUserRoutes from './routes/personaluser.js';
 import PaymentRoutes from './routes/payment.js';
 import NotificationRoutes from './routes/notification.js';
 
+import CompanyUserAuthRoutes from './routes/companyuserauth.js';
+import PersonalUserAuthRoutes from './routes/personaluserauth.js';
+
 const app = express();
 dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({origin: true, credentials: true}));
+app.use(cors());
 
 const connect = async () => {
     try {
@@ -40,8 +43,8 @@ app.use(express.json());
 app.use("/api/companyuser", CompanyUserRoutes);
 app.use("/api/personaluser", PersonalUserRoutes);
 app.use("/api/payment", PaymentRoutes);
-app.use("/api/auth/company", CompanyUserRoutes);
-app.use("/api/auth/personal", PersonalUserRoutes);
+app.use("/api/auth/company", CompanyUserAuthRoutes);
+app.use("/api/auth/personal", PersonalUserAuthRoutes);
 app.use("/api/notification", NotificationRoutes);
 
 app.use((req, res, next) => {

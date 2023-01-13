@@ -43,11 +43,11 @@ const PersonalUserSchema = new mongoose.Schema({
     },
     isActive: { // 활성화 여부
         type: Boolean,
-        required: true,
+        default: true,
     },
     isApproved: { // 승인 여부
         type: Boolean,
-        required: true,
+        default: false,
     },
     memo: { //메모
         type: String,

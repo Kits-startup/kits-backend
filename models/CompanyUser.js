@@ -27,15 +27,15 @@ const UserSchema = new mongoose.Schema({
     },
     isActive: { // 활성화 여부
         type: Boolean,
-        required: true,
+        default: true,
     },
     lastLogin: { // 최종 로그인 정보
         type: Date,
-        required: true,
+        default: Date.now
     },
     isApproved: { // 승인 여부
         type: Boolean,
-        required: true,
+        default: false,
     },
     memo: { // 메모
         type: String,
